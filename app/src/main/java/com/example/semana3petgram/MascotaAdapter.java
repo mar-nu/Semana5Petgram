@@ -22,6 +22,8 @@ public class MascotaAdapter extends RecyclerView.Adapter<MascotaAdapter.MascotaV
         this.activity=activity;
     }
 
+
+
     @Override
     public MascotaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new MascotaViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.mascotas_cardview, parent, false));
