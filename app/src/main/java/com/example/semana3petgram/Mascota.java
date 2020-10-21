@@ -1,16 +1,16 @@
 package com.example.semana3petgram;
 
 public class Mascota {
-
+    private int id;
     private String nombre;
-    private String likes;
+    private int likes;
     private int foto;
 
     public Mascota(){
 
     }
 
-    public Mascota(String nombre, String likes, int foto) {
+    public Mascota(String nombre, int likes, int foto) {
         this.nombre = nombre;
         this.likes = likes;
         this.foto = foto;
@@ -24,16 +24,24 @@ public class Mascota {
         this.nombre = nombre;
     }
 
-    public String getLikes() {
+    public int getLikes() {
         return likes;
     }
 
-    public void setLikes(String likes) {
+    public void setLikes(int likes) {
         this.likes = likes;
     }
 
     public int getFoto() {
         return foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setFoto(int foto) {

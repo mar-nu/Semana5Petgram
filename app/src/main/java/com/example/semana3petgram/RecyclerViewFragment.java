@@ -11,15 +11,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link RecyclerViewFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class RecyclerViewFragment extends Fragment {
+
+public class RecyclerViewFragment extends Fragment implements IRecyclerViewFragment {
     private RecyclerView rvMascotas;
-    private LinearLayoutManager llm;
-    private MascotaAdapter adapter;
+    private ArrayList<Mascota> mascotas;
+    private IRecyclerViewFragmentPresenter presenter;
 
     public RecyclerViewFragment() {
         // Required empty public constructor
@@ -33,24 +29,40 @@ public class RecyclerViewFragment extends Fragment {
       View v = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
         rvMascotas = (RecyclerView) v.findViewById(R.id.rvMascotas);
+        presenter = new RecyclerViewFragmentPresenter (this, getContext());
 
-        llm = new LinearLayoutManager(getActivity());
-        rvMascotas.setLayoutManager(llm);
-        adapter = new MascotaAdapter(dataSet(), (AppCompatActivity) getActivity());
-        rvMascotas.setAdapter(adapter);
         return v;
     }
 
-    private ArrayList<Mascota> dataSet() {
-        ArrayList<Mascota> mascotas = new ArrayList<>();
-        mascotas.add(new Mascota("Sherlock", "5", R.drawable.corgi1));
-        mascotas.add(new Mascota("Bowie", "3", R.drawable.corgi2));
-        mascotas.add(new Mascota("Greta", "2", R.drawable.corgi3));
-        mascotas.add(new Mascota("Fox", "6", R.drawable.corgi4));
-        mascotas.add(new Mascota("Frances", "7", R.drawable.corgi5));
-        mascotas.add(new Mascota("Ezra", "3", R.drawable.corgi6));
-        mascotas.add(new Mascota("Harry", "3", R.drawable.corgi7));
+  /* public void InicializarDatos() {
+        mascotas = new ArrayList<>();
+        mascotas.add(new Mascota("Sherlock", 22, R.drawable.corgi1));
+        mascotas.add(new Mascota("Bowie", 3, R.drawable.corgi2));
+        mascotas.add(new Mascota("Greta", 9, R.drawable.corgi3));
+        mascotas.add(new Mascota("Fox", 23, R.drawable.corgi4));
+        mascotas.add(new Mascota("Frances", 9, R.drawable.corgi5));
+        mascotas.add(new Mascota("Ezra", 2, R.drawable.corgi6));
+        mascotas.add(new Mascota("Harry", 5, R.drawable.corgi7));
 
-        return mascotas;
+    } */
+
+    @Override
+    public void generarLinearLayoutVertical() {
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        rvMascotas.setLayoutManager(llm);
+
+    }
+
+    @Override
+    public MascotaAdapter crearAdaptador(ArrayList<Mascota> mascotas) {
+       MascotaAdapter adapter = new MascotaAdapter(mascotas, (AppCompatActivity) getActivity());
+        return adapter;
+    }
+
+    @Override
+    public void inicializarAdaptadorRV(MascotaAdapter adaptador) {
+        rvMascotas.setAdapter(adaptador);
+
     }
 }

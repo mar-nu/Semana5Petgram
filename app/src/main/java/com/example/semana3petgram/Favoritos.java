@@ -37,11 +37,11 @@ public class Favoritos extends AppCompatActivity {
     private ArrayList<Mascota> dataSet() {
         ArrayList<Mascota> mascotas = new ArrayList<>();
 
-        mascotas.add(new Mascota("Greta", "2", R.drawable.corgi3));
-        mascotas.add(new Mascota("Harry", "3", R.drawable.corgi7));
-        mascotas.add(new Mascota("Fox", "6", R.drawable.corgi4));
-        mascotas.add(new Mascota("Frances", "7", R.drawable.corgi5));
-        mascotas.add(new Mascota("Ezra", "3", R.drawable.corgi6));
+        mascotas.add(new Mascota("Greta", 2, R.drawable.corgi3));
+        mascotas.add(new Mascota("Harry", 3, R.drawable.corgi7));
+        mascotas.add(new Mascota("Fox", 6, R.drawable.corgi4));
+        mascotas.add(new Mascota("Frances", 7, R.drawable.corgi5));
+        mascotas.add(new Mascota("Ezra", 3, R.drawable.corgi6));
 
 
         return mascotas;
